@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    {{-- our own CSS FILES --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{{ asset('assets/fonts/icomoon/style.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon/font/flaticon.css')}}" />
+
+    <link rel="stylesheet" href="{{ asset('assets/css/tiny-slider.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/aos.css')}}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
+
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
+<body>
+    <div id="app">
+
+        <nav class="site-nav">
+            <div class="container">
+              <div class="menu-bg-wrap">
+                <div class="site-navigation">
+                  <a href="index.html" class="logo m-0 float-start">SmatRentalPro</a>
+      
+                  <ul
+                    class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
+                  >
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="has-children">
+                      <a href="properties.html">Properties</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Buy Property</a></li>
+                        <li><a href="#">Sell Property</a></li>
+                        <li class="has-children">
+                          <a href="#">Dropdown</a>
+                          <ul class="dropdown">
+                            <li><a href="#">Sub Menu One</a></li>
+                            <li><a href="#">Sub Menu Two</a></li>
+                            <li><a href="#">Sub Menu Three</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+
+                    @guest
+                    @if (Route::has('login'))
+                        <li class=""><a href="{{ route('login') }}">Log In</a></li>
+                    @endif
+
+                    @if (Route::has('login'))
+                        <li class=""><a href="{{ route('register') }}">Register</a></li>
+                    @endif
+
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary">
+                            {{ __('Logout') }}
+                        </a>
+                        
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+    
+                    </li>
+                @endguest
+                  </ul>
+      
+                  <a
+                    href="#"
+                    class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+                    data-toggle="collapse"
+                    data-target="#main-navbar"
+                  >
+                    <span></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <main style="margin-top: 120px;"> <!-- adjust the value as needed -->
+            @yield('content')
+        </main>
+
+    </div>
+
+    {{-- our script files --}}
+
+    
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/js/tiny-slider.js')}}"></script>
+    <script src="{{ asset('assets/js/aos.js')}}"></script>
+    <script src="{{ asset('assets/js/navbar.js')}}"></script>
+    <script src="{{ asset('assets/js/counter.js')}}"></script>
+    <script src="{{ asset('assets/js/custom.js')}}"></script>
+</body>
+</html>
