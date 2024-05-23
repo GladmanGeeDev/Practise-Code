@@ -187,7 +187,7 @@
               <!--add text-danger to it to make it read-->
             </div>
             <div class="col-6">
-              <form action="" method="POST">
+              <form action="{{ route('apply.property')}}" method="POST">
                 @csrf
                 <input name="property_id" type="hidden" value="{{ $property->id }}">
                 <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
@@ -199,7 +199,7 @@
                 <input name="property_price" type="hidden" value="{{ $property->salary}}">
                 <input name="property_image" type="hidden" value="{{ $property->image}}">
 
-                {{-- @if ($applyProperty > 0)
+                @if ($applyProperty > 0)
 
                 <button name="submit" type="submit" class="btn btn-block btn-md btn-success" disabled>You Applied this Property</button>
 
@@ -207,7 +207,7 @@
 
                 <button name="submit" type="submit" class="btn btn-block btn-light btn-md">Apply Property</button>
 
-                @endif --}}
+                @endif
 
               </form>
             </div>
