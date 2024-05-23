@@ -158,8 +158,61 @@
                 </ul>
               </div>
             </div>
-          </div>
+     
         </div>
+        <div class="row mb-5">
+            <div class="col-6">
+              <form action="{{ route('save.property')}}" method="POST">
+                @csrf
+                <input name="property_id" type="hidden" value="{{ $property->id }}">
+                <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                <input name="property_title" type="hidden" value="{{ $property->title }}">
+                <input name="property_city" type="hidden" value="{{ $property->city }}">
+                <input name="property_type" type="hidden" value="{{ $property->type}}">
+                
+                <input name="property_price" type="hidden" value="{{ $property->price}}">
+                <input name="property_image" type="hidden" value="{{ $property->image}}">
+
+                @if ($savedProperty > 0)
+
+                <button name="submit" type="submit" class="btn btn-block btn-md btn-success" disabled>You Saved this Property</button>
+
+
+                @else
+
+                  <button name="submit" type="submit" class="btn btn-block btn-light btn-md">Save Property</button>
+            
+                @endif
+            </form>
+              <!--add text-danger to it to make it read-->
+            </div>
+            <div class="col-6">
+              <form action="" method="POST">
+                @csrf
+                <input name="property_id" type="hidden" value="{{ $property->id }}">
+                <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                
+                <input name="property_title" type="hidden" value="{{ $property->title }}">
+                <input name="property_city" type="hidden" value="{{ $property->city }}">
+                <input name="property_type" type="hidden" value="{{ $property->type}}">
+              
+                <input name="property_price" type="hidden" value="{{ $property->salary}}">
+                <input name="property_image" type="hidden" value="{{ $property->image}}">
+
+                {{-- @if ($applyProperty > 0)
+
+                <button name="submit" type="submit" class="btn btn-block btn-md btn-success" disabled>You Applied this Property</button>
+
+                @else
+
+                <button name="submit" type="submit" class="btn btn-block btn-light btn-md">Apply Property</button>
+
+                @endif --}}
+
+              </form>
+            </div>
+          </div>
+      </div>
       </div>
     </div>
 

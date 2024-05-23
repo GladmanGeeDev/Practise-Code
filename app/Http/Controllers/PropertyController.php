@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Category;
+use App\Models\PropertySaved;
+use Auth;
 
 class PropertyController extends Controller
 {
@@ -16,8 +18,34 @@ class PropertyController extends Controller
   {
     $property = Property::find($id);
 
-    return view ('properties.single', compact('property'));
-  }
+    $savedProperty = PropertySaved::where('property_id', $id)->where('user_id', Auth::user()->id)->count();
+
+    
+    //Getting Related Properties
+    $relatedProperties = Property::where('category_id', $property->category_id)->where('id', '!=', $id)->take(4)->get();
+
+    return view ('properties.single', compact('property', 'relatedProperties', 'savedProperty'));
+  } 
+
+  public function saveProperty(Request $request){
+    $saveProperty = PropertySaved::create([
+        'property_id' => $request->property_id,
+        'user_id' => $request->user_id,
+        'property_title' => $request->property_title,
+        'property_city' => $request->property_city,
+        'property_type' => $request->property_type,
+    
+        'property_price' => $request->property_price,
+        'property_image' => $request->property_image,
+
+    ]);
+    
+    if($saveProperty) {
+        return redirect('/properties/single/'.$request->property_id. '')->with('save', 'Property Saved Sucessfully');
+    }
+
+
+}
 
     /**
      * Show the form for creating a new resource.
