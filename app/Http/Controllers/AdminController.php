@@ -111,11 +111,10 @@ class AdminController extends Controller
 
         $property = new Property($request->all());
 
-        if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $property->image = $imageName;
-        }
+        $destinationPath = 'assets/images/';
+        $myimage = $request->image->getClientOriginalName();
+        $request->image->move(public_path($destinationPath), $myimage);
+        
         $property->save();
 
 
