@@ -32,3 +32,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 
 Route::get('/admins/all-clients', [App\Http\Controllers\AdminController::class, 'viewClients'])->name('view.clients');
 
+Route::get('/display-categories', [App\Http\Controllers\AdminController::class, 'displayCategories'])->name('display.categories');

@@ -49,6 +49,15 @@ class AdminController extends Controller
 
     }
 
+    public function displayCategories(){
+
+        $categories = Category::all();
+
+        return view("admin.display-categories", compact('categories'));
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
