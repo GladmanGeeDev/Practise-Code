@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\Property;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\PropertyApply;
 
 class AdminController extends Controller
 {
@@ -12,8 +16,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        
-        return view("admin.dashboard");
+        $properties = Property::select()->count();
+
+        $categories = Category::select()->count();
+
+        $application_property = PropertyApply::select()->count();
+
+        return view("admin.dashboard", compact('properties', 'categories', 'application_property'));
     }
 
     public function viewLogin()
@@ -30,6 +39,14 @@ class AdminController extends Controller
             return redirect() -> route('admin.dashboard');
         }
         return redirect()->route('home')->with(['error' => 'error logging in']);
+    }
+
+    public function viewClients(){
+
+        $clients = User::all();
+
+        return view("admin.clients", compact('clients'));
+
     }
 
 

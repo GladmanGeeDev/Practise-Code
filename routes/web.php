@@ -29,3 +29,6 @@ Route::get('admin', [App\Http\Controllers\AdminController::class, 'index'])->nam
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 });
+
+Route::get('/admins/all-clients', [App\Http\Controllers\AdminController::class, 'viewClients'])->name('view.clients');
+

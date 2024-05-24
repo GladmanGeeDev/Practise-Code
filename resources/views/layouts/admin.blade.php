@@ -30,13 +30,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+            <a class="nav-link" href="{{ route('view.clients')}}" style="margin-left: 20px;">Clients</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories-admins/show-categories.html" style="margin-left: 20px;">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="jobs-admins/show-jobs.html" style="margin-left: 20px;">Jobs</a>
+            <a class="nav-link" href="jobs-admins/show-jobs.html" style="margin-left: 20px;">Properties</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="applications-admins/show-apps.html" style="margin-left: 20px;">Applications</a>
