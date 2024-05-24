@@ -14,6 +14,11 @@
              
             </div>
 
+            @if($errors->has('name'))
+            <div class="alert alert-danger" role="alert">
+                <p class="alert alert-success">{{ $errors->first('name')}}</p>
+            @endif
+
   
             <!-- Submit button -->
             <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>

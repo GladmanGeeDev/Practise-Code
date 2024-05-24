@@ -80,6 +80,70 @@ class AdminController extends Controller
         
     }
 
+    public function displayProperties(){
+
+        $properties = Property::all();
+
+        return view("admin.display-properties", compact('properties'));
+
+    }
+
+    public function createProperties(){
+
+        $categories = Category::all();
+
+        return view("admin.create-properties", compact('categories'));
+    }
+
+
+    public function storeProperties(Request $request){
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'city' => 'required|string|max:255',
+            'type' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required|integer',
+            'status' => 'required|string|max:255',
+        ]);
+
+        $property = new Property($request->all());
+
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $property->image = $imageName;
+        }
+        $property->save();
+
+
+        // $createProperty = Property::create([
+        //     'title' => $request->title,
+        //     'property_city' => $request->city,
+        //     'property_type' => $request->type,
+        //     'property_category_id' => $request->category_id,
+        //     'image' => $myimage,
+        //     'property_price' => $request->price,
+        //     'description' => $request->description,
+        //     'property_status' => $request->status,
+        // ]);
+
+        // if($createProperty) {
+        //     return redirect('/display-properties/')->with('create', 'Property created Successfully');
+        // }
+
+        return redirect('/display-properties/')->with('success', 'Property created successfully.');
+
+        
+    }
+
+    
+
+
+   
+
 
 
     /**

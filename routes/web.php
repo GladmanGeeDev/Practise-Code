@@ -36,3 +36,8 @@ Route::get('/display-categories', [App\Http\Controllers\AdminController::class, 
 
 Route::get('/create-categories', [App\Http\Controllers\AdminController::class, 'createCategories'])->name('create.categories');
 Route::post('/create-categories', [App\Http\Controllers\AdminController::class, 'storeCategories'])->name('store.categories');
+
+Route::get('/display-properties', [App\Http\Controllers\AdminController::class, 'displayProperties'])->name('display.properties');
+
+Route::get('/create-properties', [App\Http\Controllers\AdminController::class, 'createProperties'])->name('create.properties');
+Route::post('/create-properties', [App\Http\Controllers\AdminController::class, 'storeProperties'])->name('properties.store');
