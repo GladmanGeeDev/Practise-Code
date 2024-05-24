@@ -26,7 +26,8 @@
                     <tr>
                         <th scope="row">{{ $property->id }}</th>
                         <td>
-                            <img src="{{ asset('assets/images/'.$property->image.'')}}" alt="Property Image" width="100">
+                            <img src="{{ asset('assets/images/' . $property->image) }}" alt="Property Image" width="100">
+
                         </td>
                         <td>{{ $property->title }}</td>
                         <td>{{ $property->category->name }}</td>
