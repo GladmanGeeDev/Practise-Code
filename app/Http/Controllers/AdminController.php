@@ -80,6 +80,14 @@ class AdminController extends Controller
         
     }
 
+    public function displayApplications(){
+
+        $applications = PropertyApply::all();
+
+        return view("admin.display-applications", compact('applications'));
+
+    }
+
     public function displayProperties(){
 
         $properties = Property::all();
@@ -136,6 +144,8 @@ class AdminController extends Controller
         // }
 
         return redirect('/display-properties/')->with('success', 'Property created successfully.');
+
+        
 
         
     }

@@ -39,7 +39,7 @@
             <a class="nav-link" href="{{ route('display.properties')}}" style="margin-left: 20px;">Properties</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="applications-admins/show-apps.html" style="margin-left: 20px;">Applications</a>
+            <a class="nav-link" href="{{ route('display.applications')}}" style="margin-left: 20px;">Applications</a>
           </li>
         </ul>
         @endauth

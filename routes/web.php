@@ -41,3 +41,5 @@ Route::get('/display-properties', [App\Http\Controllers\AdminController::class, 
 
 Route::get('/create-properties', [App\Http\Controllers\AdminController::class, 'createProperties'])->name('create.properties');
 Route::post('/create-properties', [App\Http\Controllers\AdminController::class, 'storeProperties'])->name('properties.store');
+
+Route::get('/display-applications', [App\Http\Controllers\AdminController::class, 'displayApplications'])->name('display.applications');
