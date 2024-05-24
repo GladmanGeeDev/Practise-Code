@@ -32,7 +32,7 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-lg-9 text-center">
           <h1 class="heading" data-aos="fade-up">
-            Easiest way to find your dream home
+            Tailored for every property type
           </h1>
           <form
             action="#"
@@ -43,7 +43,7 @@
             <input
               type="text"
               class="form-control px-4"
-              placeholder="Your ZIP code or City. e.g. New York"
+              placeholder="City. e.g. Harare"
             />
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
@@ -87,21 +87,10 @@
                     <span class="d-block mb-2 text-black-50"
                       >{{ $property->city}}</span
                     >
-                    <span class="city d-block mb-3">California, USA</span>
-
-                    <div class="specs d-flex mb-4">
-                      <span class="d-block d-flex align-items-center me-3">
-                        <span class="icon-bed me-2"></span>
-                        <span class="caption">2 beds</span>
-                      </span>
-                      <span class="d-block d-flex align-items-center">
-                        <span class="icon-bath me-2"></span>
-                        <span class="caption">2 baths</span>
-                      </span>
-                    </div>
+                  
 
                     <a
-                      href="property-single.html"
+                      href="{{ route('properties.single', $property->id) }}"
                       class="btn btn-primary py-2 px-3"
                       >See details</a
                     >
