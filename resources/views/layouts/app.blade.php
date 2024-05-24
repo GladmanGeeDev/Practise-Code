@@ -39,7 +39,7 @@
             <div class="container">
               <div class="menu-bg-wrap">
                 <div class="site-navigation">
-                  <a href="index.html" class="logo m-0 float-start">SmatRentalPro</a>
+                  <a href="{{ url('/')}}" class="logo m-0 float-start">SmatRentalPro</a>
       
                   <ul
                     class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
@@ -65,7 +65,7 @@
                     <li><a href="contact.html">Contact Us</a></li>
 
                     @guest
-                    @if (Route::has('login'))
+                      @if (Route::has('login'))
                         <li class=""><a href="{{ route('login') }}">Log In</a></li>
                     @endif
 
