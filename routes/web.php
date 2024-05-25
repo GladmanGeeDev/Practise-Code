@@ -5,9 +5,11 @@ use App\Http\Middleware\XheckForAuth;
 
 
 
-Auth::routes();
+Auth::routes([
+    'verify' => true
+]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::get('/properties/single/{id}', [App\Http\Controllers\PropertyController::class, 'single'])->name('properties.single');
 
