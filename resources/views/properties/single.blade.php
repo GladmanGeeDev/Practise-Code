@@ -139,7 +139,9 @@
               <form action="{{ route('save.property')}}" method="POST">
                 @csrf
                 <input name="property_id" type="hidden" value="{{ $property->id }}">
-                <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                @auth
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    @endauth
                 <input name="property_title" type="hidden" value="{{ $property->title }}">
                 <input name="property_city" type="hidden" value="{{ $property->city }}">
                 <input name="property_type" type="hidden" value="{{ $property->type}}">
@@ -164,7 +166,9 @@
               <form action="{{ route('apply.property')}}" method="POST">
                 @csrf
                 <input name="property_id" type="hidden" value="{{ $property->id }}">
-                <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                @auth
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+            @endauth
                 
                 <input name="property_title" type="hidden" value="{{ $property->title }}">
                 <input name="property_city" type="hidden" value="{{ $property->city }}">
