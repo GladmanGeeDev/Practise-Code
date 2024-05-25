@@ -51,30 +51,35 @@
                     <li><a href="#">Contact Us</a></li>
 
                     @guest
-                      @if (Route::has('login'))
+                    @if (Route::has('login'))
                         <li class=""><a href="{{ route('login') }}">Log In</a></li>
                     @endif
-
-                    @if (Route::has('login'))
+                
+                    @if (Route::has('register'))
                         <li class=""><a href="{{ route('register') }}">Register</a></li>
                     @endif
-
+                @else
+                    @if (Auth::user()->hasVerifiedEmail())
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary">
+                                {{ __('Logout') }}
+                            </a>
+                            
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                     @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary">
-                            {{ __('Logout') }}
-                        </a>
-                        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-    
-                    </li>
+                        <li class="nav-item">
+                            <span>{{ __('Please verify your email') }}</span>
+                        </li>
+                    @endif
                 @endguest
+                
                   </ul>
       
                   <a
