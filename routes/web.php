@@ -18,6 +18,8 @@ Route::post('/property/save', [App\Http\Controllers\PropertyController::class, '
 Route::post('/jobs/apply', [App\Http\Controllers\PropertyController::class, 'applyProperty'])->name('apply.property');
 
 
+
+
 Route::get('admin/login', [App\Http\Controllers\AdminController::class, 'viewLogin'])->name('view.login')->middleware(XheckForAuth::class);
 
 Route::post('admin/login', [App\Http\Controllers\AdminController::class, 'checkLogin'])->name('check.login');
