@@ -30,7 +30,12 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+
+   
+
+    
+  
 </head>
 <body>
     <div id="app">
@@ -106,12 +111,12 @@
                 <div class="col-lg-4">
                   <div class="widget">
                     <h3>Contact</h3>
-                    <address>43 Raymouth Rd. Baltemoer, London 3910</address>
+                    <address>.......</address>
                     <ul class="list-unstyled links">
-                      <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-                      <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+                      <li><a href="tel://11234567890">........</a></li>
+                      <li><a href="tel://11234567890">.....</a></li>
                       <li>
-                        <a href="mailto:info@mydomain.com">info@mydomain.com</a>
+                        <a href="mailto:info@mydomain.com">...</a>
                       </li>
                     </ul>
                   </div>
@@ -192,13 +197,10 @@
                       document.write(new Date().getFullYear());
                     </script>
                     . All Rights Reserved. &mdash; Designed with love by
-                    <a href="https://untree.co">Untree.co</a>
-                    <!-- License information: https://untree.co/license/ -->
+                    <a href="#">Smatech Group</a>
+              
                   </p>
-                  <div>
-                    Distributed by
-                    <a href="https://themewagon.com/" target="_blank">themewagon</a>
-                  </div>
+              
                 </div>
               </div>
             </div>
